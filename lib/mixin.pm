@@ -3,7 +3,7 @@ package mixin;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 
 =head1 NAME
