@@ -3,7 +3,7 @@ package mixin;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 
 =head1 NAME
@@ -26,7 +26,7 @@ mixin - Mix-in inheritance, an alternative to multiple inheritance
 
   package Dog::Small::Retriever;
   use base 'Dog::Small';
-  use mixin qw(Dog::Small Dog::Retriever);
+  use mixin 'Dog::Retriever';
 
   my $small_retriever = Dog::Small::Retriever->new;
   $small_retriever->speak;          # Yip!
@@ -66,6 +66,8 @@ sub import {
     my $caller = caller;
 
     foreach my $mixin (@mixins) {
+        # XXX This is lousy, but it will do for now.
+        eval { require $caller; } unless defined ${$caller.'::VERSION'};
         _mixup($mixin, $caller);
     }
 }
@@ -118,12 +120,12 @@ sub _thieve_isa {
 
 sub _croak {
     require Carp;
-    Carp::croak(@_);
+    goto &Carp::croak;
 }
 
 sub _carp {
     require Carp;
-    Carp::carp(@_);
+    goto &Carp::carp;
 }
 
 
