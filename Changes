@@ -1,3 +1,6 @@
+0.03  Mon Apr 29 18:33:45 EDT 2002
+  * mixin forgot to require the package being mixed in!
+
 0.02  Wed Apr 17 11:05:08 EDT 2002
   * Removed the caveat about mixins not having any superclasses.
   * Removed the caveat about mixins not working stand-alone.
