@@ -3,6 +3,7 @@ MANIFEST
 Makefile.PL
 lib/mixin.pm
 lib/mixin/with.pm
+t/lib/Dog/Hamish.pm
 t/lib/Test/Builder.pm
 t/lib/Test/More.pm
 t/lib/Test/Simple.pm

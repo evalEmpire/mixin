@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 use lib 't/lib';
-use Test::More tests => 4;
+use Test::More tests => 7;
 
 require_ok('mixin');
 require_ok('mixin::with');
@@ -31,3 +31,15 @@ package main;
 my $small_retriever = Dog::Small::Retriever->new;
 is( $small_retriever->speak,            "Yip!\n" );
 is( $small_retriever->fetch('ball'),    "Get your own stinking ball\n" );
+
+
+package Hamish;
+use base  'Dog';
+use mixin 'Dog::Hamish';
+
+
+package main;
+my $hamish = Hamish->new;
+isa_ok( $hamish, 'Hamish' );
+is( $hamish->speak,                     "Bark!\n" );
+is( $hamish->burglers,                  'burglers are everywhere!' );

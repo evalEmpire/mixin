@@ -1,3 +1,6 @@
+0.04  Mon Apr 29 18:45:58 EDT 2002
+  * And I forgot to test it. :(
+
 0.03  Mon Apr 29 18:33:45 EDT 2002
   * mixin forgot to require the package being mixed in!
 
