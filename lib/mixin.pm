@@ -3,7 +3,7 @@ package mixin;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 
 =head1 NAME
@@ -14,7 +14,7 @@ mixin - Mix-in inheritance, an alternative to multiple inheritance
 
   package Dog;
   sub speak { print "Bark!\n" }
-  sub new { bless {} }
+  sub new { my $class = shift;  bless {}, $class }
 
   package Dog::Small;
   use base 'Dog';
@@ -75,8 +75,13 @@ sub _mixup {
 
     require mixin::with;
     my($with, $pkg) = mixin::with->__mixers($mixin);
+
+    _croak("$mixin is not a mixin") unless $with;
     _croak("$caller must be a subclass of $with")
       unless $caller->isa($with);
+    _croak("$mixin should not have any superclasses") if
+      grep $_ ne $with, @{$mixin.'::ISA'};
+
 
     # This has to happen here and not in mixin::with because "use
     # mixin::with" typically runs *before* the rest of the mixin's
@@ -107,6 +112,12 @@ sub _croak {
     require Carp;
     Carp::croak(@_);
 }
+
+sub _carp {
+    require Carp;
+    Carp::carp(@_);
+}
+
 
 =head1 AUTHOR
 

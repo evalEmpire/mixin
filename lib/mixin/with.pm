@@ -3,7 +3,7 @@ package mixin::with;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = 0.01;
+$VERSION = 0.02;
 
 =head1 NAME
 
@@ -75,28 +75,19 @@ sub import {
     my($class, $mixed_with) = @_;
     my $mixin = caller;
 
-    _carp("Mixin classes should not have superclasses")
-      if @{$mixin.'::ISA'};
-
     my $tmp_pkg = __PACKAGE__.'::tmp'.$Tmp_Counter++;
     $Mixers{$mixin} = { mixed_with => $mixed_with,
                         tmp_pkg    => $tmp_pkg,
                       };
 
+    require base;
+
+    eval sprintf q{
+        package %s;
+        base->import($mixed_with);
+    }, $mixin;
+
     return 1;
-}
-
-
-sub _thieve_public_methods {
-    my($mixin, $pkg) = @_;
-
-    local *glob;
-    while( my($sym, $glob) = each %{$mixin.'::'}) {
-        next if $sym =~ /^_/;
-        next unless defined $glob;
-        *glob = *$glob;
-        *{$pkg.'::'.$sym} = *glob{CODE} if *glob{CODE};
-    }
 }
 
 

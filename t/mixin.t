@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 use lib 't/lib';
-use Test::More 'no_plan';
+use Test::More tests => 4;
 
 require_ok('mixin');
 require_ok('mixin::with');
