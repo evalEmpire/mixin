@@ -3,7 +3,7 @@ package mixin::with;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = 0.02;
+$VERSION = 0.03;
 
 =head1 NAME
 
@@ -94,7 +94,7 @@ sub __mixers {
 
 sub _carp {
     require Carp;
-    Carp::carp(@_);
+    goto &Carp::carp;
 }
 
 
