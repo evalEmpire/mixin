@@ -1,2 +1,10 @@
+0.02  Wed Apr 17 11:05:08 EDT 2002
+  * Removed the caveat about mixins not having any superclasses.
+  * Removed the caveat about mixins not working stand-alone.
+  * Fixed so a mixin can use it's parent's methods during
+    initialization.
+  * Made flexible enough to work with Class::DBI, which is pretty
+    pathological.
+
 0.01  Tue Apr 16 15:42:01 EDT 2002
   * It works

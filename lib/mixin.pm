@@ -79,16 +79,14 @@ sub _mixup {
     _croak("$mixin is not a mixin") unless $with;
     _croak("$caller must be a subclass of $with")
       unless $caller->isa($with);
-    _croak("$mixin should not have any superclasses") if
-      grep $_ ne $with, @{$mixin.'::ISA'};
-
 
     # This has to happen here and not in mixin::with because "use
     # mixin::with" typically runs *before* the rest of the mixin's
     # subroutines are declared.
     _thieve_public_methods( $mixin, $pkg );
+    _thieve_isa( $mixin, $pkg, $with );
 
-    push @{$caller.'::ISA'}, $pkg;
+    unshift @{$caller.'::ISA'}, $pkg;
 }
 
 
@@ -105,6 +103,16 @@ sub _thieve_public_methods {
         *glob = *$glob;
         *{$pkg.'::'.$sym} = *glob{CODE} if *glob{CODE};
     }
+
+    return 1;
+}
+
+sub _thieve_isa {
+    my($mixin, $pkg, $with) = @_;
+
+    @{$pkg.'::ISA'} = grep $_ ne $with, @{$mixin.'::ISA'};
+
+    return 1;
 }
 
 

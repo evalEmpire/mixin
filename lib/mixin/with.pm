@@ -21,21 +21,15 @@ mixin::with is used to declare mix-in classes.
 
 =head2 Creating a mixin class.
 
-There are three critical differences between a normal subclass and one
+There's one critical difference between a normal subclass and one
 intended to be mixin.
 
 =over 4
 
-=item 1. It can have no superclasses.
-
-=item 2. It can have no private methods.  Instead, use private functions.
+=item 1. It can have no private methods.  Instead, use private functions.
 
 C<_private($self, @args)>  instead of  C<$self->_private(@args);>
-
-=item 3. The mixin class is useless on it's own.
-
-You can't just "use Dog::Retriever" alone and expect it to do
-anything useful.  It must be mixed.
+Don't worry, it's the same thing.
 
 =back
 
