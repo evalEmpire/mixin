@@ -10,3 +10,4 @@ t/lib/Test/Builder.pm
 t/lib/Test/More.pm
 t/lib/Test/Simple.pm
 t/mixin.t
+t/universal.t
