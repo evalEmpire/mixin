@@ -27,7 +27,8 @@ WriteMakefile(
     NAME            => $PACKAGE,
     VERSION_FROM    => "lib/$PACKAGE_FILE.pm", # finds $VERSION
     PREREQ_PM       => {
-        'Test::More'    => 0.40
+        'Test::More'    => 0.40,
+        'base'          => 0,
     },
 );
 
