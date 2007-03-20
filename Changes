@@ -1,4 +1,4 @@
-0.05
+0.05  Mon Mar 19 20:35:49 PDT 2007
   Bug fixes:
   * "use mixin" will now throw an error if the mixed in module cannot be
     loaded. [rt.cpan.org 5366]
