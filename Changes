@@ -3,6 +3,11 @@
   * "use mixin" will now throw an error if the mixed in module cannot be
     loaded. [rt.cpan.org 5366]
 
+  Documentation:
+  - Explained how to write a mixin that can mixin with anything.
+  - Improved the "no private methods" documentation to use lexical
+    private methods.
+
 0.04  Mon Apr 29 18:45:58 EDT 2002
   * And I forgot to test it. :(
 

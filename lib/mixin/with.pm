@@ -26,9 +26,16 @@ intended to be mixin.
 
 =over 4
 
-=item 1. It can have no private methods.  Instead, use private functions.
+=item 1. It can have no private methods.  Instead, use lexical methods.
 
-C<_private($self, @args)>  instead of  C<$self->_private(@args);>
+  my $private = sub { ... };
+  $self->$private(@args);
+
+instead of 
+
+  sub _private { ... }
+  $self->_private(@args);
+
 Don't worry, it's the same thing.
 
 =back
@@ -96,6 +103,20 @@ sub _carp {
     require Carp;
     goto &Carp::carp;
 }
+
+
+=head1 FAQ
+
+=over 4
+
+=item What if I want to mixin with anything?
+
+Sometimes a mixin does not care what it mixes in with.  Consider a
+logging or error handling mixin.  For these, simply mixin with
+UNIVERSAL.
+
+    package My::Errors;
+    use mixin::with qw(UNIVERSAL);
 
 
 =head1 AUTHOR
