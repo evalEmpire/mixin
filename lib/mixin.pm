@@ -3,7 +3,7 @@ package mixin;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 
 =head1 NAME
@@ -69,6 +69,13 @@ sub import {
         # XXX This is lousy, but it will do for now.
         unless( defined ${$mixin.'::VERSION'} ) {
             eval qq{ require $mixin; };
+            _croak($@) if $@ and $@ !~ /^Can't locate .*? at /;
+            unless( %{$mixin."::"} ) {
+                _croak(<<ERROR);
+Mixin class package "$mixin" is empty.
+    (Perhaps you need to 'use' the module which defines that package first?)
+ERROR
+            }
         }
         _mixup($mixin, $caller);
     }
