@@ -3,7 +3,7 @@ package mixin;
 use strict;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 
 =head1 NAME
@@ -39,9 +39,13 @@ and solves the problem of knowing which parent will be called.
 It also solves a number of tricky problems like diamond inheritence.
 
 The idea is to solve the same sets of problems which MI solves without
-the problems of MI.
+the problems of MI.  For all practical purposes you can think of a
+mixin as multiple inheritance without the actual inheritance.
 
-=head2 Using a mixin class.
+Mixins are a band-aid for the problems of MI.  A better solution is to use traits (called "Roles" in Perl 6), which are like mixins on steroids.  Class::Trait implements this.
+
+
+=head2 Using a mixin class
 
 There are two steps to using a mixin-class.
 
@@ -58,6 +62,47 @@ functionality
 
 and now you can use fetch().
 
+
+=head2 Writing a mixin class
+
+See L<mixin::with>.
+
+
+=head2 Mixins, Inheritance and SUPER
+
+A class which uses a mixin I<does not> inherit from it.  However, through some clever trickery, C<SUPER> continues to work.  Here's an example.
+
+    {
+        package Parent;
+        sub foo { "Parent" }
+    }
+
+    {
+        package Middle;
+        use mixin::with "Parent";
+
+        sub foo {
+            my $self = shift;
+            return $self->SUPER::foo(), "Middle";
+        }
+    }
+
+    {
+        package Child;
+        use base "Parent";
+        use mixin "Middle";
+
+        sub foo {
+            my $self = shift;
+            return $self->SUPER::foo(), "Child";
+        }
+    }
+
+    print join " ", Child->foo;  # Parent Middle Child
+
+This will print C<Parent Middle Child>.  You'll note that this is the same result if Child inherited from Middle and Middle from Parent.  Its also the same result if Child multiply inherited from Middle and Parent but I<NOT> if it inherited from Parent then Middle.  The advantage of mixins vs multiple inheritance is such ambiguities do not exist.
+
+Note that even though both the Child and Middle define foo() the Middle mixin does not overwrite Child's foo().  A mixin does not simply export its methods into the mixer and thus does not blow over existing methods.
 
 =cut
 
@@ -138,9 +183,18 @@ sub _carp {
 }
 
 
+=head1 NOTES
+
+A mixin will not warn if the mixin and the user define the same method.
+
 =head1 AUTHOR
 
 Michael G Schwern E<lt>schwern@pobox.comE<gt>
+
+=head1 SEE ALSO
+
+L<Class::Trait> - mixin.pm is a gateway drug to traits
+L<Class::C3> - another band-aid on multiple inheritance
 
 =cut
 

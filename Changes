@@ -1,3 +1,12 @@
+0.06  Wed Apr 18 10:08:59 PDT 2007
+  Documentation:
+  * Documented the behavior of SUPER
+  * The user of a mixin does not inherit from the mixin.
+  * A mixin does not blow over existing methods [rt.cpan.org 26289]
+  * Reference Class::Trait and Class::C3
+  * Talk a bit about mixins vs traits
+  - A mixin will not warn if it has the same methods as the user
+
 0.05  Mon Mar 19 20:35:49 PDT 2007
   Bug fixes:
   * "use mixin" will now throw an error if the mixed in module cannot be
