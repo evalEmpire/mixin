@@ -10,5 +10,8 @@ t/lib/Test/Builder.pm
 t/lib/Test/More.pm
 t/lib/Test/Simple.pm
 t/mixin.t
+t/mixin_twice.t
+t/mixup_errors.t
+t/private_methods.t
 t/SUPER.t
 t/universal.t
