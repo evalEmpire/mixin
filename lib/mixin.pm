@@ -133,7 +133,7 @@ sub _mixup {
     my($with, $pkg) = mixin::with->__mixers($mixin);
 
     _croak("$mixin is not a mixin") unless $with;
-    _croak("$caller must be a subclass of $with")
+    _croak("$caller must be a subclass of $with to mixin $mixin")
       unless $caller->isa($with);
 
     # This has to happen here and not in mixin::with because "use

@@ -1,3 +1,8 @@
+0.07
+  Interface
+  - Slightly better error message when trying to use a mixin and you're
+    not of the right class.
+
 0.06  Wed Apr 18 10:08:59 PDT 2007
   Documentation:
   * Documented the behavior of SUPER
