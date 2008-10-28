@@ -1,7 +1,8 @@
 #!/usr/bin/perl -w
 
 use lib 't/lib';
-use Test::More tests => 2;
+use Test::More 'no_plan';
+use Test::NoWarnings;
 
 {
     package Dog;
