@@ -177,11 +177,6 @@ sub _croak {
     goto &Carp::croak;
 }
 
-sub _carp {
-    require Carp;
-    goto &Carp::carp;
-}
-
 
 =head1 NOTES
 

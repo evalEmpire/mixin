@@ -102,12 +102,6 @@ sub __mixers {
 }
 
 
-sub _carp {
-    require Carp;
-    goto &Carp::carp;
-}
-
-
 =head1 FAQ
 
 =over 4
