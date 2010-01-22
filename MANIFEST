@@ -19,3 +19,6 @@ t/mixup_errors.t
 t/private_methods.t
 t/SUPER.t
 t/universal.t
+README
+LICENSE
+META.yml
