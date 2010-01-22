@@ -156,7 +156,7 @@ sub _thieve_public_methods {
     while( my($sym, $glob) = each %{$mixin.'::'}) {
         next if $sym =~ /^_/;
         next unless defined $glob;
-        *glob = *$glob;
+        *glob = *{$mixin.'::'.$sym};
         *{$pkg.'::'.$sym} = *glob{CODE} if *glob{CODE};
     }
 

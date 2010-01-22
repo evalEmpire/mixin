@@ -1,4 +1,8 @@
 0.07
+  Bug Fixes:
+  * Classes which defined constants did not work with mixin on
+    Perl 5.10.x. [rt.cpan.org 40495]
+
   Interface:
   - Slightly better error message when trying to use a mixin and you're
     not of the right class.
