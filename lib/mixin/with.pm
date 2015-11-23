@@ -1,6 +1,7 @@
 package mixin::with;
 
 use strict;
+use warnings;
 no strict 'refs';
 use vars qw($VERSION);
 $VERSION = 0.07;
