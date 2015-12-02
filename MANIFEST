@@ -22,3 +22,4 @@ t/universal.t
 README
 LICENSE
 META.yml
+META.json

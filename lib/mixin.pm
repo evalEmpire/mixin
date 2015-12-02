@@ -4,7 +4,7 @@ use strict;
 use warnings;
 no strict 'refs';
 use vars qw($VERSION);
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 
 =head1 NAME
@@ -207,7 +207,7 @@ Michael G Schwern E<lt>schwern@pobox.comE<gt>
 
 =head1 LICENSE
 
-Copyright 2002-2010 by Michael G Schwern
+Copyright 2002-2015 by Michael G Schwern
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.

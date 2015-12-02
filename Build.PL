@@ -11,6 +11,10 @@ my $build = Module::Build->new(
 
     recursive_test_files => 1,
 
+    configure_requires => {
+        "Module::Build" => '0.36'
+    },
+    
     requires            => {
         "base"                  => 0,
     },
@@ -24,9 +28,9 @@ my $build = Module::Build->new(
 
     meta_merge          => {
         resources       => {
-            homepage    => "http://search.cpan.org/dist/mixin",
-            bugtracker  => "https://rt.cpan.org/Public/Dist/Display.html?Name=mixin",
-            repository  => "http://github.com/schwern/mixin",
+            homepage    => "https://github.com/evalEmpire/mixin",
+            bugtracker  => "https://github.com/evalEmpire/mixin/issues",
+            repository  => "https://github.com/evalEmpire/mixin",
         },
         keywords        => [qw(mixin inheritance devel)],
     }
