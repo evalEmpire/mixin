@@ -35,6 +35,10 @@ mixin - Mix-in inheritance, an alternative to multiple inheritance
 
 =head1 DESCRIPTION
 
+B<NOTE> You probably want to look into the similar but superior
+concept of traits/roles instead.  See L</"SEE ALSO"> for suggested
+modules.
+
 Mixin inheritance is an alternative to the usual multiple-inheritance
 and solves the problem of knowing which parent will be called.
 It also solves a number of tricky problems like diamond inheritence.
@@ -213,11 +217,11 @@ L<http://dev.perl.org/licenses/>
 
 =head1 SEE ALSO
 
-L<Class::Trait> - mixin.pm is a gateway drug to traits
-
-L<Class::C3> - another band-aid on multiple inheritance
+L<Role::Tiny> - A stand alone implementation of traits/roles, like mixins but better.
 
 L<Moose::Role> - Moose's implementation of traits/roles.
+
+L<mro> and L<Class::C3> make multiple inheritance work more sensibly.
 
 =cut
 
