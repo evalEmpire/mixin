@@ -1,6 +1,7 @@
 package mixin::with;
 
 use strict;
+use warnings;
 no strict 'refs';
 use vars qw($VERSION);
 $VERSION = 0.07;
@@ -120,7 +121,7 @@ UNIVERSAL.
 
 Two reasons.  One is technical, it allows C<SUPER> to work.
 
-The other is organizational.  It rare that a mixin is intended to be mixed with any old class.  It often uses methods as if it were a subclass.  For this reason it is good that it declares this relationship explicitly else the mixee won't be aware of the mixin's expectations.
+The other is organizational.  It is rare that a mixin is intended to be mixed with any old class.  It often uses methods as if it were a subclass.  For this reason it is good that it declares this relationship explicitly else the mixee won't be aware of the mixin's expectations.
 
 
 =item Why use mixins instead of traits?
@@ -131,10 +132,20 @@ The other is mixins work more like a drop-in replacement for multiple inheritanc
 
 If these advantages don't apply, proceed directly to traits.
 
+=back
 
 =head1 AUTHOR
 
 Michael G Schwern <schwern@pobox.com>
+
+=head1 LICENSE
+
+Copyright 2002-2010 by Michael G Schwern
+
+This library is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+L<http://dev.perl.org/licenses/>
 
 =head1 SEE ALSO
 
